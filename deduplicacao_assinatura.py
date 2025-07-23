@@ -49,7 +49,7 @@ def jaccard_udf(str1, str2):
 df_joined = df.alias("a").join(
     df.alias("b"),
     (col("a.cpf") == col("b.cpf")) &
-    (col("a.id") < col("b.id")) &
+    (col("a.id") < col("b.id")) & #<- Garante que o registro posterior seja comparado com um anterior
     (col("a.assinatura") != col("b.assinatura"))
 )
 
